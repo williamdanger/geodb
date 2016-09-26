@@ -1,6 +1,5 @@
 psycopg2
 sqlalchemy
-shapely
 geoalchemy2
 flask
 flask-restful-swagger

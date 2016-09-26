@@ -3,7 +3,6 @@ from datetime import datetime
 from flask_restful import Resource, abort, reqparse
 from flask_restful_swagger import swagger
 from geoalchemy2.shape import to_shape
-from shapely import wkb
 from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
 
