@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from db.city import City
 
 neighborParser = reqparse.RequestParser()
-neighborParser.add_argument('sameCountry', default=False, help='Limit results to the same country')
+neighborParser.add_argument('sameCountry', type=bool, default=False, help='Limit results to the same country')
 neighborParser.add_argument('limit', type=int, default=10, help='Number of results to return')
 neighborParser.add_argument('offset', type=int, default=0, help='Number of results skip before returning data')
 
@@ -48,21 +48,26 @@ class NeighborQuery(Resource):
                 'name': 'cityId',
                 'description': 'The ID of the city',
                 'required': True,
+                'allowMultiple': False,
+                'dataType': 'integer',
                 'paramType': 'path'
             }, {
                 'name': 'sameCountry',
                 'description': 'Limit the cities returned to be in the same country as the origin',
                 'required': False,
+                'allowMultiple': False,
                 'dataType': 'boolean'
             }, {
                 'name': 'limit',
                 'description': 'Limit the cities to the given number.  Defaults to 10',
                 'required': False,
+                'allowMultiple': False,
                 'dataType': 'integer'
             }, {
                 'name': 'offset',
                 'description': 'Skips the given number of cities to return.  Defaults to 0',
                 'required': False,
+                'allowMultiple': False,
                 'dataType': 'integer'
             }
         ],
@@ -96,4 +101,4 @@ class NeighborQuery(Resource):
 class CityQuery(Resource):
     def get(self):
         args = cityParser.parse_args()
-        origin = City.query.filter(City.id == cityId).first()
+        return {}

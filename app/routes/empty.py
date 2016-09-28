@@ -2,10 +2,11 @@ from flask_restful import Resource
 from flask_restful_swagger import swagger
 
 class Noop(Resource):
-    "This endpoint does nothing =D"
+    """This endpoint does nothing =D"""
     @swagger.operation(
         notes='Not much to say',
         nickname='get',
+        parameters=[],
         responseMessages=[
             {
                 'code': '200',

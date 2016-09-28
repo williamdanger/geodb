@@ -26,11 +26,11 @@ with engine.connect() as conn:
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    with open('cities1000.csv', 'rb') as f:
+    with open('./data/cities1000.csv', 'rb') as f:
         count = 0
-        for city in f.readlines():
-            cityFields = city.split('\t')
-            newCity = City(
+        for cityData in f.readlines():
+            cityFields = cityData.split('\t')
+            newCity = city.City(
                 id=cityFields[0],
                 name=cityFields[1],
                 asciiName=cityFields[2],
