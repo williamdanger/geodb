@@ -60,3 +60,8 @@ This is the normal `pip install flask`.  Nothing special.
 Since the easiest way to test a UI is Swagger support, let's make this easy.  Since it runs on
 annotations and doesn't use YAML, `flask-restful-swagger` seems like the best way to go.  Also,
 `flask-restful` makes API declaration pretty easy.
+
+
+## Post notes
+
+[See this post](http://gitblog.pandelyon.com/technical/flask/postgresql/2016/10/06/geodb.html)
