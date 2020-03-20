@@ -4,15 +4,15 @@ from flask_restful_swagger import swagger
 class Noop(Resource):
     """This endpoint does nothing =D"""
     @swagger.operation(
-        notes='Not much to say',
+        notes='Basic uptime endpoint.  Only used to validate the application',
         nickname='get',
         parameters=[],
         responseMessages=[
             {
                 'code': '200',
-                'description': 'The given city was found and the resulting matches were returned'
+                'description': ''
             }
         ]
     )
     def get(self):
-        return {}
+        return {"status": "OK"}
