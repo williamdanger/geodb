@@ -1,9 +1,9 @@
 # Flask + PostGIS Test
 
-A streamlined version of this is running at http://geodb.pandelyon.com/
-
 This is a simple API in front of a PostGIS-enabled Postgresql DB using Flask.  A couple of notes
 for later if I want to reproduce this in the future.
+
+A hosted version of this with only US cities is running at http://geodb.pandelyon.com/
 
 Using OS X, so everything is for that.
 
