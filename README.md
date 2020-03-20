@@ -1,12 +1,15 @@
 # Flask + PostGIS Test
 
+A streamlined version of this is running at http://geodb.pandelyon.com/
+
 This is a simple API in front of a PostGIS-enabled Postgresql DB using Flask.  A couple of notes
 for later if I want to reproduce this in the future.
 
 Using OS X, so everything is for that.
 
 Although there is a separate `requirements.txt` file for installing everything and should work
-in general, I split the packages out into sections just to talk more aobut them.
+in general, I split the packages out into sections just to talk more about them.
+
 
 # System requirements
 
@@ -36,7 +39,7 @@ By default, Flask will run on `localhost:5000`.  Assuming that's the case (You'l
 you can interact with the app on the following routes:
 
 * `http://localhost:5000/`: Basic sanity test.  Returns `{"status": "ok"}` if the app is running.
-* `http://localhost:5000/city/{cityId}/neighbor/`: Performs a search for the given city, returning the nearest cities
+* `http://localhost:5000/city/{cityId}/neighbor/`: Performs a search for the given city, returning the nearest cities.  Make sure to include the trailing slash!
 * `http://localhost:5000/api/spec.json`: OpenAPI spec for the application in JSON format
 * `http://localhost:5000/api/spec.html`: Interactive OpenAPI spec for the application
 
