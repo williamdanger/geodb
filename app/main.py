@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, send_from_directory
 from flask_restful import Api
 from flask_restful_swagger import swagger
@@ -18,4 +20,4 @@ api.add_resource(cities.NeighborQuery, '/city/<int:cityId>/neighbor/')
 api.add_resource(cities.CityQuery, '/city/')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=os.getenv('PORT'))
