@@ -56,3 +56,5 @@ with engine.connect() as conn:
                 print 'Added %s cities so far' % count
 
         session.commit()
+
+print 'Seeding complete.  Locate some cities!'
