@@ -8,7 +8,50 @@ Using OS X, so everything is for that.
 Although there is a separate `requirements.txt` file for installing everything and should work
 in general, I split the packages out into sections just to talk more aobut them.
 
-## Database Setup
+# System requirements
+
+If you're looking to run this locally, this is developed against:
+
+* Python 2.7
+* Postgres 9.5 (via Postgres.app)
+
+
+# Local Development
+
+## Install and Run
+After you've done the prerequisite "Clone and setup any virtual environments", do the following:
+
+* Start a new instance of default Postgres (e.g. 5432, postgres default user)
+* Execute the following
+
+```
+pip install -r requirements.txt  # Python dependencies
+python seedDB.py                 # Seed the DB with Geodata
+python app/main.py               # Start Flask running in debug mode
+```
+
+## Using the app
+
+By default, Flask will run on `localhost:5000`.  Assuming that's the case (You'll see it in the logs if not),
+you can interact with the app on the following routes:
+
+* `http://localhost:5000/`: Basic sanity test.  Returns `{"status": "ok"}` if the app is running.
+* `http://localhost:5000/city/{cityId}/neighbor/`: Performs a search for the given city, returning the nearest cities
+* `http://localhost:5000/api/spec.json`: OpenAPI spec for the application in JSON format
+* `http://localhost:5000/api/spec.html`: Interactive OpenAPI spec for the application
+
+Note the city search doesn't work in this UI, so you'll need to do searches with `curl` on the command line for now.
+
+If you would like some sample cities, see:
+* San Francisco: 5391959
+* Seattle: 5809844
+* Shreveport: 4341513
+* St. Petersburg: 498817
+* Solothurn: 2658564
+* Swindon: 2636388
+
+
+## Database Notes
 
 ### Data File
 
@@ -49,19 +92,19 @@ that to make a new superuser for enabling the extension as well as connecting to
 In the `db/` folder, simply run `seedDB.py`.  It'll take a minute or two.  You can drop everything
 with `cleanDB.py`.
 
-## REST API Setup
+## REST API Notes
 
-### Install Flask
+### Flask
 
 This is the normal `pip install flask`.  Nothing special.
 
-### Install Simple Swagger Support
+### Swagger Support
 
 Since the easiest way to test a UI is Swagger support, let's make this easy.  Since it runs on
 annotations and doesn't use YAML, `flask-restful-swagger` seems like the best way to go.  Also,
 `flask-restful` makes API declaration pretty easy.
 
 
-## Post notes
+## Blog Post notes
 
-[See this post](http://gitblog.pandelyon.com/technical/flask/postgresql/2016/10/06/geodb.html)
+[See this post](http://play.pandelyon.com/technical/flask/postgresql/2016/10/06/geodb.html)
