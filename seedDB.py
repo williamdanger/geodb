@@ -18,7 +18,7 @@ cursor.close()
 conn.close()
 
 # Actually enable PostGIS
-engine = sqlalchemy.create_engine('postgresql://geouser@localhost:5432/geodb', echo=True)
+engine = sqlalchemy.create_engine(os.getenv('DATABASE_URL'), echo=True)
 with engine.connect() as conn:
     conn.execute('CREATE EXTENSION postgis')
 
