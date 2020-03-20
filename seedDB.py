@@ -8,14 +8,14 @@ from sqlalchemy.orm import sessionmaker
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 # Setup the database with a user that can enable PostGIS
-conn = psycopg2.connect(os.getenv('DATABASE_URL'))
-conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-cursor = conn.cursor()
-cursor.execute('CREATE USER geouser')
-cursor.execute('CREATE DATABASE geodb')
-cursor.execute('GRANT ALL PRIVILEGES ON DATABASE geodb TO geouser')
-cursor.close()
-conn.close()
+# conn = psycopg2.connect(os.getenv('DATABASE_URL'))
+# conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+# cursor = conn.cursor()
+# cursor.execute('CREATE USER geouser')
+# cursor.execute('CREATE DATABASE geodb')
+# cursor.execute('GRANT ALL PRIVILEGES ON DATABASE geodb TO geouser')
+# cursor.close()
+# conn.close()
 
 # Actually enable PostGIS
 engine = sqlalchemy.create_engine(os.getenv('DATABASE_URL'), echo=True)
