@@ -11,7 +11,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 conn = psycopg2.connect(os.getenv('DATABASE_URL'))
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cursor = conn.cursor()
-cursor.execute('CREATE USER geouser WITH superuser')
+cursor.execute('CREATE USER geouser')
 cursor.execute('CREATE DATABASE geodb')
 cursor.execute('GRANT ALL PRIVILEGES ON DATABASE geodb TO geouser')
 cursor.close()
@@ -20,14 +20,15 @@ conn.close()
 # Actually enable PostGIS
 engine = sqlalchemy.create_engine(os.getenv('DATABASE_URL'), echo=True)
 with engine.connect() as conn:
-    conn.execute('CREATE EXTENSION postgis')
+    pass
+    # conn.execute('CREATE EXTENSION postgis')
 
 with engine.connect() as conn:
     city.City.__table__.create(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    with open('./data/cities1000.csv', 'rb') as f:
+    with open('./data/cities-america.csv', 'rb') as f:
         count = 0
         for cityData in f.readlines():
             cityFields = cityData.split('\t')
