@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 # Setup the database with a user that can enable PostGIS
-conn = psycopg2.connect(database="postgres", user="postgres", host="localhost")
+conn = psycopg2.connect(database="postgres", user="postgres", host="db")
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cursor = conn.cursor()
 cursor.execute('CREATE USER geouser WITH superuser')
@@ -17,7 +17,7 @@ cursor.close()
 conn.close()
 
 # Actually enable PostGIS
-engine = sqlalchemy.create_engine('postgresql://geouser@localhost:5432/geodb', echo=True)
+engine = sqlalchemy.create_engine('postgresql://geouser@db:5432/geodb', echo=True)
 with engine.connect() as conn:
     conn.execute('CREATE EXTENSION postgis')
 

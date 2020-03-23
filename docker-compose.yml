@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+    ports:
+    - 5000:5000
+    networks:
+      - db
+    volumes:
+      - data:/data
+
+  db:
+    image: mdillon/postgis
+    ports:
+    - 5432:5432
+    networks:
+      - db
+
+networks:
+  db:
+
+volumes:
+  data:
